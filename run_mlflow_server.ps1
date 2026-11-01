@@ -1,7 +1,7 @@
 ﻿# Windows-вариант run_mlflow_server.sh
 
 # читаем .env в переменные окружения (на Linux это делает export $(cat .env | xargs))
-Get-Content .env | Where-Object { $_ -match '^[A-Z_]+=.+' } | ForEach-Object {
+Get-Content .env | Where-Object { $_ -match '^[A-Z0-9_]+=.+' } | ForEach-Object {
     $name, $value = $_ -split '=', 2
     Set-Item "env:$name" $value.Trim()
 }
